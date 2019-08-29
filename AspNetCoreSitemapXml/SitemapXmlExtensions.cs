@@ -43,7 +43,7 @@ namespace SitemapXml
                     {
                         context.Response.ContentType = "application/xml; charset=UTF-8";
 
-                        using (var stream = typeof(Sitemap).Assembly.GetManifestResourceStream("SitemapXml.Assets.sitemap.xsl"))
+                        using (var stream = typeof(Sitemap).Assembly.GetManifestResourceStream("AspNetCoreSitemapXml.Assets.sitemap.xsl"))
                         using (var streamreader = new System.IO.StreamReader(stream))
                         {
                             var content = await streamreader.ReadToEndAsync();
