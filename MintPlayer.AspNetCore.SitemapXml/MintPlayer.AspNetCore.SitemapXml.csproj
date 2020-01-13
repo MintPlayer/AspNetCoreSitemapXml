@@ -7,11 +7,11 @@
     <Company>MintPlayer</Company>
     <Description>Helper library to host a sitemap from your ASP.NET Core application</Description>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/MusicDemons/AspNetCoreSitemapXml</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/MusicDemons/AspNetCoreSitemapXml</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/MintPlayer/MintPlayer.AspNetCore.SitemapXml</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/MintPlayer/MintPlayer.AspNetCore.SitemapXml</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
     <PackageTags>ASP.NET Core, XML Sitemap</PackageTags>
-    <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -28,10 +28,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\MintPlayer.Timestamps\MintPlayer.Timestamps.csproj" />
+    <PackageReference Include="MintPlayer.Timestamps" Version="1.0.1" />
   </ItemGroup>
 
 </Project>
