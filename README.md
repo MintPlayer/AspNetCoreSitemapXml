@@ -18,12 +18,15 @@ This call makes the ISitemapXml service available as a scoped service.
 ### Enable XML formatters
 Modify Startup@ConfigureServices
 
-    services.AddMvc(options => {
-        // Optionally, for content-negotiation
-        options.RespectBrowserAcceptHeader = true; // false by default
-    })
-    .AddXmlSerializerFormatters()
-    .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+    services
+        .AddControllersWithViews(options => {
+            options.RespectBrowserAcceptHeader = true;
+        })
+        .AddXmlSerializerFormatters()
+        .AddMvcOptions(mvc_options => {
+            mvc_options.OutputFormatters.Insert(0, new Microsoft.AspNetCore.Mvc.Formatters.XmlSerializerOutputFormatter());
+        })
+        .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Latest);
 
 ### Add SitemapController
 An example of your SitemapController. Notice the use of the `Produces` attribute:
@@ -81,22 +84,25 @@ An example of your SitemapController. Notice the use of the `Produces` attribute
 ### Styling your sitemap
 You can use an XSL stylesheet for your sitemaps. Modify Startup@ConfigureServices
 
-    services.AddMvc(options => {
-        options.RespectBrowserAcceptHeader = true; // false by default
-    })
-    .AddXmlSerializerFormatters()
-    .AddSitemapXmlFormatters(options => {
-        options.StylesheetUrl = "/assets/sitemap.xsl";
-    })
-    .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+    services
+        .AddControllersWithViews(options => {
+            options.RespectBrowserAcceptHeader = true;
+        })
+        .AddXmlSerializerFormatters()
+        .AddMvcOptions(mvc_options => {
+            mvc_options.OutputFormatters.Insert(0, new Microsoft.AspNetCore.Mvc.Formatters.XmlSerializerOutputFormatter());
+        })
+        .AddSitemapXmlFormatters(options => {
+            options.StylesheetUrl = "/assets/sitemap.xsl";
+        })
+        .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Latest);
 
 Now you can either put your own XSLT file in the ClientApp/src/assets folder, or call the `UseDefaultSitemapXmlStylesheet` middleware.
 
 ### Using the built-in XML stylesheet
 Put the following middleware before the app.UseMvc call:
 
-    app.UseDefaultSitemapXmlStylesheet(options =>
-    {
+    app.UseDefaultSitemapXmlStylesheet(options => {
         options.StylesheetUrl = "/assets/sitemap.xsl";
     });
 
