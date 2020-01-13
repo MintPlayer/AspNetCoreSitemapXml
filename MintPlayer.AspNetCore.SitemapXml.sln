@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29215.179
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCoreSitemapXml", "AspNetCoreSitemapXml\AspNetCoreSitemapXml.csproj", "{D2B17317-3200-42A1-BB11-FBF3A6581696}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MintPlayer.AspNetCore.SitemapXml", "MintPlayer.AspNetCore.SitemapXml\MintPlayer.AspNetCore.SitemapXml.csproj", "{D2B17317-3200-42A1-BB11-FBF3A6581696}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MintPlayer.Timestamps", "MintPlayer.Timestamps\MintPlayer.Timestamps.csproj", "{65D43484-5ECA-4F5A-90A9-3E1D837F4EA5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MintPlayer.Timestamps", "MintPlayer.Timestamps\MintPlayer.Timestamps.csproj", "{65D43484-5ECA-4F5A-90A9-3E1D837F4EA5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
