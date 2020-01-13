@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
-using SitemapXml.Interfaces;
-using SitemapXml.DependencyInjection.Interfaces;
+using MintPlayer.AspNetCore.SitemapXml.DependencyInjection.Interfaces;
+using MintPlayer.Timestamps;
 
-namespace SitemapXml.DependencyInjection
+namespace MintPlayer.AspNetCore.SitemapXml.DependencyInjection
 {
     internal class SitemapXml : ISitemapXml
     {
@@ -19,7 +19,7 @@ namespace SitemapXml.DependencyInjection
         /// <param name="perPage">Number of items in one sitemap</param>
         /// <param name="urlFunc">Function to compute the url</param>
         /// <returns></returns>
-        public IEnumerable<Sitemap> GetSitemapIndex<T>(IEnumerable<T> items, int perPage, Func<int, int, string> urlFunc) where T : ITimestamps
+        public IEnumerable<Sitemap> GetSitemapIndex<T>(IEnumerable<T> items, int perPage, Func<int, int, string> urlFunc) where T : IUpdateTimestamp
         {
             if (items.Any())
             {

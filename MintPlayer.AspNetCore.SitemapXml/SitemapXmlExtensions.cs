@@ -2,9 +2,9 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
-using SitemapXml.Options;
+using MintPlayer.AspNetCore.SitemapXml.Options;
 
-namespace SitemapXml
+namespace MintPlayer.AspNetCore.SitemapXml
 {
     public static class SitemapXmlExtensions
     {
@@ -37,13 +37,14 @@ namespace SitemapXml
 
             return app.Use(async (context, next) =>
             {
+                
                 if (context.Request.Path == opt.StylesheetUrl)
                 {
                     try
                     {
                         context.Response.ContentType = "application/xml; charset=UTF-8";
 
-                        using (var stream = typeof(Sitemap).Assembly.GetManifestResourceStream("AspNetCoreSitemapXml.Assets.sitemap.xsl"))
+                        using (var stream = typeof(Sitemap).Assembly.GetManifestResourceStream("MintPlayer.AspNetCore.SitemapXml.Assets.sitemap.xsl"))
                         using (var streamreader = new System.IO.StreamReader(stream))
                         {
                             var content = await streamreader.ReadToEndAsync();

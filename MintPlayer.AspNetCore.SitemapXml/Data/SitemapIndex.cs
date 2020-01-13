@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Xml.Serialization;
 
-namespace SitemapXml
+namespace MintPlayer.AspNetCore.SitemapXml
 {
     [XmlRoot("sitemapindex", Namespace = "http://www.sitemaps.org/schemas/sitemap/0.9")]
     public class SitemapIndex

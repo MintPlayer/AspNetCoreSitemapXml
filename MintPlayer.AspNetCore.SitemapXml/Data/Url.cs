@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
-using SitemapXml.Enums;
+using MintPlayer.AspNetCore.SitemapXml.Enums;
 
-namespace SitemapXml
+namespace MintPlayer.AspNetCore.SitemapXml
 {
     [XmlRoot("url")]
     public class Url

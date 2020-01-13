@@ -2,7 +2,7 @@
 using System.IO;
 using System.Xml;
 
-namespace SitemapXml.Formatters
+namespace MintPlayer.AspNetCore.SitemapXml.Formatters
 {
     /// <summary>This formatter adds an XML stylesheet reference to each application/xml response</summary>
     public class XmlSerializerOutputFormatter : Microsoft.AspNetCore.Mvc.Formatters.XmlSerializerOutputFormatter
@@ -12,7 +12,7 @@ namespace SitemapXml.Formatters
         {
             this.stylesheetUrl = stylesheetUrl;
             this.WriterSettings.OmitXmlDeclaration = false;
-            this.SupportedMediaTypes.Clear(); this.SupportedMediaTypes.Add("application/xml");
+            this.SupportedMediaTypes.Clear(); this.SupportedMediaTypes.Add("text/xml");
         }
 
         public override XmlWriter CreateXmlWriter(TextWriter writer, XmlWriterSettings xmlWriterSettings)

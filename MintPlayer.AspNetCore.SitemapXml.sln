@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MintPlayer.AspNetCore.Sitem
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MintPlayer.Timestamps", "MintPlayer.Timestamps\MintPlayer.Timestamps.csproj", "{65D43484-5ECA-4F5A-90A9-3E1D837F4EA5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MintPlayer.AspNetCore.SitemapXml.Test", "MintPlayer.AspNetCore.SitemapXml.Test\MintPlayer.AspNetCore.SitemapXml.Test.csproj", "{12A604D9-CDBB-4C69-8963-FDA51D41D0BA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{65D43484-5ECA-4F5A-90A9-3E1D837F4EA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65D43484-5ECA-4F5A-90A9-3E1D837F4EA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65D43484-5ECA-4F5A-90A9-3E1D837F4EA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12A604D9-CDBB-4C69-8963-FDA51D41D0BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12A604D9-CDBB-4C69-8963-FDA51D41D0BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12A604D9-CDBB-4C69-8963-FDA51D41D0BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12A604D9-CDBB-4C69-8963-FDA51D41D0BA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

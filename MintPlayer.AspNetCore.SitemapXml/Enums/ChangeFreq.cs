@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Xml.Serialization;
 
-namespace SitemapXml.Enums
+namespace MintPlayer.AspNetCore.SitemapXml.Enums
 {
     public enum ChangeFreq
     {

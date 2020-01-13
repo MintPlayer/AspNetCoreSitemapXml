@@ -1,4 +1,4 @@
-﻿namespace SitemapXml.Options
+﻿namespace MintPlayer.AspNetCore.SitemapXml.Options
 {
     public class SitemapXmlOptions
     {

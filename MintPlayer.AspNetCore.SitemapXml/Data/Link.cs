@@ -1,6 +1,6 @@
 ﻿using System.Xml.Serialization;
 
-namespace SitemapXml
+namespace MintPlayer.AspNetCore.SitemapXml
 {
     public class Link
     {

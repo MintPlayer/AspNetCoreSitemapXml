@@ -6,9 +6,10 @@
     <Company>MintPlayer</Company>
     <Description>Interfaces for timestamps on DTO's</Description>
     <PackageReleaseNotes></PackageReleaseNotes>
-    <RepositoryUrl>https://github.com/MintPlayer/AspNetCoreSitemapXml/tree/master/MintPlayer.Timestamps</RepositoryUrl>
+    <RepositoryUrl>https://github.com/MintPlayer/MintPlayer.AspNetCore.SitemapXml/tree/master/MintPlayer.Timestamps</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
 </Project>
