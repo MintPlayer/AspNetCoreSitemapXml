@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>Pieterjan De Clippel</Authors>
+    <Company>MintPlayer</Company>
+    <Description>Interfaces for timestamps on DTO's</Description>
+    <PackageReleaseNotes># MintPlayer.Timestamps
+Contains interfaces to implement timestamps (insert, update, delete) on DTO's
+## NuGet package
+https://www.nuget.org/packages/MintPlayer.Timestamps/
+## Installation
+### NuGet package manager
+Open the NuGet package manager and install MintPlayer.Timestamps in your project
+### Package manager console
+Install-Package MintPlayer.Timestamps</PackageReleaseNotes>
+  </PropertyGroup>
+
+</Project>
