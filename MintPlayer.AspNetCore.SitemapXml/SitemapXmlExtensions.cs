@@ -42,7 +42,7 @@ namespace MintPlayer.AspNetCore.SitemapXml
                 {
                     try
                     {
-                        context.Response.ContentType = "application/xml; charset=UTF-8";
+                        context.Response.ContentType = "application/xslt+xml; charset=UTF-8";
 
                         using (var stream = typeof(Sitemap).Assembly.GetManifestResourceStream("MintPlayer.AspNetCore.SitemapXml.Assets.sitemap.xsl"))
                         using (var streamreader = new System.IO.StreamReader(stream))
