@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
+using MintPlayer.AspNetCore.SitemapXml.Data;
 using MintPlayer.AspNetCore.SitemapXml.Enums;
 
 namespace MintPlayer.AspNetCore.SitemapXml
@@ -23,5 +24,9 @@ namespace MintPlayer.AspNetCore.SitemapXml
         /// <summary>List of alternate links</summary>
         [XmlElement("link", Namespace = "http://www.w3.org/1999/xhtml")]
         public List<Link> Links { get; set; } = new List<Link>();
+
+        /// <summary>List of URLs</summary>
+        [XmlElement("video", Namespace = "http://www.google.com/schemas/sitemap-video/1.1")]
+        public List<Video> Videos { get; set; } = new List<Video>();
     }
 }

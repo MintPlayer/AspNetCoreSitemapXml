@@ -9,6 +9,7 @@ namespace MintPlayer.AspNetCore.SitemapXml
         public UrlSet()
         {
             xmlns.Add("xhtml", "http://www.w3.org/1999/xhtml");
+            xmlns.Add("video", "http://www.google.com/schemas/sitemap-video/1.1");
         }
 
         public UrlSet(IEnumerable<Url> urls) : this()
