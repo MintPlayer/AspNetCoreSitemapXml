@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
-using MintPlayer.AspNetCore.SitemapXml.Data;
 using MintPlayer.AspNetCore.SitemapXml.Enums;
 
 namespace MintPlayer.AspNetCore.SitemapXml
