@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Xml.Serialization;
 
-namespace MintPlayer.AspNetCore.SitemapXml.Data
+namespace MintPlayer.AspNetCore.SitemapXml
 {
     [XmlType("video", Namespace = "http://www.google.com/schemas/sitemap-video/1.1")]
     public class Video

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Xml.Serialization;
 
-namespace MintPlayer.AspNetCore.SitemapXml.Data
+namespace MintPlayer.AspNetCore.SitemapXml
 {
     [XmlType("image", Namespace = "http://www.google.com/schemas/sitemap-image/1.1")]
     public class Image
