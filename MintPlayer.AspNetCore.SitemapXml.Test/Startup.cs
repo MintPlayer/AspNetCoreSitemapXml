@@ -35,7 +35,7 @@ namespace MintPlayer.AspNetCore.SitemapXml.Test
                 })
                 .AddSitemapXmlFormatters(options =>
                 {
-                    options.StylesheetUrl = "/assets/sitemap.xsl";
+                    options.StylesheetUrl = "/css/sitemap1.xsl";
                 })
                 .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Latest);
             services.AddSitemapXml();

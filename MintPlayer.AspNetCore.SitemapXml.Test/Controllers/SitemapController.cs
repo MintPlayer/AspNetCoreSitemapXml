@@ -57,25 +57,44 @@ namespace MintPlayer.AspNetCore.SitemapXml.Test.Controllers
         {
             var people_page = people.Skip((page - 1) * count).Take(count);
 
-            return Ok(new UrlSet(people.Select(p => {
+            return Ok(new UrlSet(people.Select((person, index) => {
                 var url = new Url
                 {
-                    Loc = $"{Request.Scheme}://{Request.Host}/{subject}/{p.Id}",
+                    Loc = $"{Request.Scheme}://{Request.Host}/{subject}/{person.Id}",
                     ChangeFreq = SitemapXml.Enums.ChangeFreq.Monthly,
-                    LastMod = p.DateUpdate,
+                    LastMod = person.DateUpdate,
                 };
                 url.Links.Add(new Link
                 {
                     Rel = "alternate",
                     HrefLang = "nl",
-                    Href = $"{Request.Scheme}://{Request.Host}/{subject}/{p.Id}?lang=nl"
+                    Href = $"{Request.Scheme}://{Request.Host}/{subject}/{person.Id}?lang=nl"
                 });
                 url.Links.Add(new Link
                 {
                     Rel = "alternate",
                     HrefLang = "fr",
-                    Href = $"{Request.Scheme}://{Request.Host}/{subject}/{p.Id}?lang=fr"
+                    Href = $"{Request.Scheme}://{Request.Host}/{subject}/{person.Id}?lang=fr"
                 });
+                url.Videos.Add(new Data.Video
+                {
+                    ContentLocation = "https://www.youtube.com/watch?v=EHfx9LXzxpw",
+                    ThumbnailLocation = "https://i.ytimg.com/vi/4N1iwQxiHrs/default.jpg",
+                    Description = "Your Love - The Outfield"
+                });
+                if (index != 2)
+                {
+                    url.Images.Add(new Data.Image
+                    {
+                        Title = "Your Love - The Outfield",
+                        Location = "https://i.ytimg.com/vi/EHfx9LXzxpw/hqdefault.jpg"
+                    });
+                    url.Images.Add(new Data.Image
+                    {
+                        Title = "Your Love - The Outfield",
+                        Location = "https://i.ytimg.com/vi/4N1iwQxiHrs/hqdefault.jpg"
+                    });
+                }
                 return url;
             })));
         }

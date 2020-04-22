@@ -25,7 +25,11 @@ namespace MintPlayer.AspNetCore.SitemapXml
         [XmlElement("link", Namespace = "http://www.w3.org/1999/xhtml")]
         public List<Link> Links { get; set; } = new List<Link>();
 
-        /// <summary>List of URLs</summary>
+        /// <summary>List of images</summary>
+        [XmlElement("image", Namespace = "http://www.google.com/schemas/sitemap-image/1.1")]
+        public List<Image> Images { get; set; } = new List<Image>();
+
+        /// <summary>List of videos</summary>
         [XmlElement("video", Namespace = "http://www.google.com/schemas/sitemap-video/1.1")]
         public List<Video> Videos { get; set; } = new List<Video>();
     }
