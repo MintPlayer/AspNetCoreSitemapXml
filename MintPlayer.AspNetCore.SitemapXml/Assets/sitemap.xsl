@@ -53,16 +53,12 @@
               </xsl:otherwise>
             </xsl:choose>
           </h2>
-          <p>
-            This is an XML sitemap, meant for consumption by search engines.<br/>
-            You can find more information about XML sitemaps on <a href="https://sitemaps.org" class="link blue">sitemaps.org</a>.
-          </p>
         </header>
 
         <xsl:apply-templates/>
 
         <footer class="mw8 center pv4 tc">
-          This is an open source <a href="https://github.com/pedroborges/xml-sitemap-stylesheet" title="Go to Github" class="link blue">XML Sitemap Stylesheet</a> created by <a href="https://pedroborg.es" title="Pedro Borges" class="link blue">pedroborg.es</a>
+          &#169; <a href="/" title="Go to website" class="link blue">MintPlayer</a>
         </footer>
 
       </body>
@@ -138,8 +134,11 @@
                 <xsl:variable name="loc">
                   <xsl:value-of select="sitemap:loc"/>
                 </xsl:variable>
-                <xsl:variable name="img">
+                <xsl:variable name="img_location">
                   <xsl:value-of select="image:image/image:loc"/>
+                </xsl:variable>
+                <xsl:variable name="img_title">
+                  <xsl:value-of select="image:image/image:title"/>
                 </xsl:variable>
                 <xsl:variable name="pno">
                   <xsl:value-of select="position()"/>
@@ -149,7 +148,13 @@
                 </td>
                 <td class="pa3 tc b bb b--silver">
                   <xsl:if test="image:image">
-                    <img src="{$img}" width="50" title="test"/>
+                    <img src="{$img_location}" width="50" title="{$img_title}"/>
+                    <xsl:if test="image:image/image:caption">
+                      <br/>
+                      <span class="i gray">
+                        <xsl:value-of select="image:image/image:caption"/>
+                      </span>
+                    </xsl:if>
                   </xsl:if>
                 </td>
                 <td class="pa3 bb b--silver">
@@ -226,15 +231,9 @@
     </xsl:variable>
     <p>
       <strong>Image: </strong>
-      <a href="{$loc}" class="mr2 link blue">
+      <a href="{$loc}" title="{$caption}" class="mr2 link blue">
         <xsl:value-of select="image:loc"/>
       </a>
-      <xsl:if test="image:caption">
-        <span class="i gray">
-          <xsl:value-of select="image:caption"/>
-        </span>
-      </xsl:if>
-      <xsl:apply-templates/>
     </p>
   </xsl:template>
 
@@ -252,9 +251,12 @@
     <xsl:variable name="thumb_loc">
       <xsl:value-of select="video:thumbnail_loc"/>
     </xsl:variable>
+    <xsl:variable name="caption">
+      <xsl:value-of select="video:description"/>
+    </xsl:variable>
     <p>
       <strong>Video: </strong>
-      <a href="{$loc}" class="mr2 link blue">
+      <a href="{$loc}" title="{$caption}" class="mr2 link blue">
         <xsl:choose>
           <xsl:when test="video:player_loc != ''">
             <xsl:value-of select="video:player_loc"/>

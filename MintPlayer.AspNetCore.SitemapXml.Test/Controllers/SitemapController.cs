@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MintPlayer.AspNetCore.SitemapXml.DependencyInjection.Interfaces;
@@ -47,7 +48,10 @@ namespace MintPlayer.AspNetCore.SitemapXml.Test.Controllers
             const int per_page = 100;
 
             var person_urls = sitemapXml.GetSitemapIndex(people, per_page, (perPage, page) => Url.RouteUrl("web-sitemap-sitemap", new { subject = "person", count = perPage, page }, Request.Scheme));
-
+            Response.OnStarting(async () =>
+            {
+                await Response.BodyWriter.WriteAsync(Encoding.UTF8.GetBytes("Hello world"));
+            });
             return new SitemapIndex(person_urls);
         }
 
@@ -76,7 +80,7 @@ namespace MintPlayer.AspNetCore.SitemapXml.Test.Controllers
                     HrefLang = "fr",
                     Href = $"{Request.Scheme}://{Request.Host}/{subject}/{person.Id}?lang=fr"
                 });
-                url.Videos.Add(new Data.Video
+                url.Videos.Add(new Video
                 {
                     ContentLocation = "https://www.youtube.com/watch?v=EHfx9LXzxpw",
                     ThumbnailLocation = "https://i.ytimg.com/vi/4N1iwQxiHrs/default.jpg",
@@ -84,14 +88,16 @@ namespace MintPlayer.AspNetCore.SitemapXml.Test.Controllers
                 });
                 if (index != 2)
                 {
-                    url.Images.Add(new Data.Image
+                    url.Images.Add(new Image
                     {
-                        Title = "Your Love - The Outfield",
+                        Title = "Your Love",
+                        Caption = "Your Love - The Outfield",
                         Location = "https://i.ytimg.com/vi/EHfx9LXzxpw/hqdefault.jpg"
                     });
-                    url.Images.Add(new Data.Image
+                    url.Images.Add(new Image
                     {
-                        Title = "Your Love - The Outfield",
+                        Title = "Your Love",
+                        Caption = "Your Love - The Outfield",
                         Location = "https://i.ytimg.com/vi/4N1iwQxiHrs/hqdefault.jpg"
                     });
                 }

@@ -11,8 +11,14 @@
     <RepositoryUrl>https://github.com/MintPlayer/MintPlayer.AspNetCore.SitemapXml</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
     <PackageTags>ASP.NET Core, XML Sitemap</PackageTags>
-    <Version>1.1.0</Version>
+    <Version>1.1.1</Version>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Formatters\**" />
+    <EmbeddedResource Remove="Formatters\**" />
+    <None Remove="Formatters\**" />
+  </ItemGroup>
 
   <ItemGroup>
     <None Remove=".gitignore" />
@@ -20,8 +26,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Include="Formatters\XmlSerializerOutputFormatter.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <EmbeddedResource Include="Assets\sitemap.xsl">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </EmbeddedResource>
   </ItemGroup>
 

@@ -11,8 +11,8 @@ namespace MintPlayer.AspNetCore.SitemapXml.Formatters
         public XmlSerializerOutputFormatter(string stylesheetUrl)
         {
             this.stylesheetUrl = stylesheetUrl;
-            this.WriterSettings.OmitXmlDeclaration = false;
-            this.SupportedMediaTypes.Clear(); this.SupportedMediaTypes.Add("text/xml");
+            WriterSettings.OmitXmlDeclaration = false;
+            SupportedMediaTypes.Clear(); SupportedMediaTypes.Add("text/xml");
         }
 
         public override XmlWriter CreateXmlWriter(TextWriter writer, XmlWriterSettings xmlWriterSettings)

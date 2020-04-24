@@ -10,7 +10,9 @@ namespace MintPlayer.AspNetCore.SitemapXml
     {
         public static IServiceCollection AddSitemapXml(this IServiceCollection services)
         {
-            return services.AddScoped<DependencyInjection.Interfaces.ISitemapXml, DependencyInjection.SitemapXml>();
+            return services
+                .AddScoped<DependencyInjection.Interfaces.ISitemapXml, DependencyInjection.SitemapXml>()
+                .AddTransient<Middleware.DefaultStylesheetMiddleware>();
         }
 
         /// <summary>
@@ -30,37 +32,9 @@ namespace MintPlayer.AspNetCore.SitemapXml
         }
 
         /// <summary>Hosts a template XML stylesheet on the specified URL</summary>
-        public static IApplicationBuilder UseDefaultSitemapXmlStylesheet(this IApplicationBuilder app, Action<SitemapXmlOptions> options)
+        public static IApplicationBuilder UseDefaultSitemapXmlStylesheet(this IApplicationBuilder app)
         {
-            var opt = new SitemapXmlOptions();
-            options(opt);
-
-            return app.Use(async (context, next) =>
-            {
-                
-                if (context.Request.Path == opt.StylesheetUrl)
-                {
-                    try
-                    {
-                        context.Response.ContentType = "text/xsl; charset=UTF-8";
-
-                        using (var stream = typeof(Sitemap).Assembly.GetManifestResourceStream("MintPlayer.AspNetCore.SitemapXml.Assets.sitemap.xsl"))
-                        using (var streamreader = new System.IO.StreamReader(stream))
-                        {
-                            var content = await streamreader.ReadToEndAsync();
-                            await context.Response.WriteAsync(content);
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        throw ex;
-                    }
-                }
-                else
-                {
-                    await next();
-                }
-            });
+            return app.UseMiddleware<Middleware.DefaultStylesheetMiddleware>();
         }
     }
 }

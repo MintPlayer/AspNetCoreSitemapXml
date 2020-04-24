@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MintPlayer.AspNetCore.SitemapXml.Options;
 
 namespace MintPlayer.AspNetCore.SitemapXml.Test
 {
@@ -29,16 +30,17 @@ namespace MintPlayer.AspNetCore.SitemapXml.Test
                     options.RespectBrowserAcceptHeader = true;
                 })
                 .AddXmlSerializerFormatters()
-                .AddMvcOptions(mvc_options =>
-                {
-                    mvc_options.OutputFormatters.Insert(0, new Microsoft.AspNetCore.Mvc.Formatters.XmlSerializerOutputFormatter());
-                })
                 .AddSitemapXmlFormatters(options =>
                 {
-                    options.StylesheetUrl = "/css/sitemap1.xsl";
+                    options.StylesheetUrl = "/assets/sitemap.xsl";
                 })
                 .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Latest);
             services.AddSitemapXml();
+
+            services.Configure<SitemapXmlOptions>(options =>
+            {
+                options.StylesheetUrl = "/assets/sitemap.xsl";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,12 +58,9 @@ namespace MintPlayer.AspNetCore.SitemapXml.Test
             }
             app.UseHttpsRedirection();
 
-            app.UseDefaultSitemapXmlStylesheet(options =>
-            {
-                options.StylesheetUrl = "/assets/sitemap.xsl";
-            });
+            app.UseDefaultSitemapXmlStylesheet();
             app.UseStaticFiles();
-            
+
             app.UseRouting();
 
             app.UseAuthorization();
