@@ -119,7 +119,7 @@
           <thead class="bg-silver">
             <tr>
               <th class="pa3 fw6 tl dark-gray" style="width:60px"></th>
-              <th class="pa3 fw6 tl dark-gray">Image</th>
+              <th class="pa3 fw6 tl dark-gray" style="min-width:130px">Image</th>
               <th class="pa3 fw6 tl dark-gray">URL</th>
               <xsl:if test="sitemap:url/sitemap:changefreq">
                 <th class="pa3 fw6 tr dark-gray" style="width:130px">Change Freq.</th>
@@ -141,6 +141,12 @@
                 <xsl:variable name="img">
                   <xsl:value-of select="image:image/image:loc"/>
                 </xsl:variable>
+                <xsl:variable name="title">
+                  <xsl:value-of select="image:image/image:title"/>
+                </xsl:variable>
+                <xsl:variable name="caption">
+                  <xsl:value-of select="image:image/image:caption"/>
+                </xsl:variable>
                 <xsl:variable name="pno">
                   <xsl:value-of select="position()"/>
                 </xsl:variable>
@@ -149,7 +155,11 @@
                 </td>
                 <td class="pa3 tc b bb b--silver">
                   <xsl:if test="image:image">
-                    <img src="{$img}" width="50" title="test"/>
+                    <img src="{$img}" width="50" title="{$title}"/>
+                    <br/>
+                    <span>
+                      <xsl:value-of select="$caption"/>
+                    </span>
                   </xsl:if>
                 </td>
                 <td class="pa3 bb b--silver">
@@ -165,7 +175,7 @@
                 <xsl:apply-templates select="sitemap:changefreq"/>
                 <xsl:apply-templates select="sitemap:priority"/>
                 <xsl:if test="sitemap:lastmod">
-                  <td class="pa3 tr bb b--silver">
+                  <td class="pa3 tr bb b--silver nowrap">
                     <xsl:value-of select="concat(substring(sitemap:lastmod, 0, 11), concat(' ', substring(sitemap:lastmod, 12, 5)), concat(' ', substring(sitemap:lastmod, 20, 6)))"/>
                   </td>
                 </xsl:if>
@@ -177,20 +187,22 @@
     </div>
   </xsl:template>
 
-  <xsl:template match="sitemap:loc|sitemap:lastmod|image:loc|image:caption|video:*">
+  <xsl:template match="sitemap:loc|sitemap:lastmod|image:loc|image:caption|image:title|video:title|video:description|video:*">
   </xsl:template>
 
+  <!-- Daily, Monthly, ... (Change Freq. column) -->
   <xsl:template match="sitemap:changefreq|sitemap:priority">
     <td class="pa3 tr bb b--silver">
       <xsl:apply-templates/>
     </td>
   </xsl:template>
 
+  <!-- Xhtml: (Main column) -->
   <xsl:template match="xhtml:link">
     <xsl:variable name="altloc">
       <xsl:value-of select="@href"/>
     </xsl:variable>
-    <p>
+    <p class="nowrap">
       <strong>Xhtml: </strong>
       <a href="{$altloc}" class="mr2 link blue">
         <xsl:value-of select="@href"/>
@@ -217,6 +229,7 @@
     <xsl:apply-templates/>
   </xsl:template>
 
+  <!-- Image: (Main column) -->
   <xsl:template match="image:image">
     <xsl:variable name="loc">
       <xsl:value-of select="image:loc"/>
@@ -224,20 +237,16 @@
     <xsl:variable name="caption">
       <xsl:value-of select="image:caption"/>
     </xsl:variable>
-    <p>
+    <p class="nowrap">
       <strong>Image: </strong>
-      <a href="{$loc}" class="mr2 link blue">
+      <a href="{$loc}" title="{$caption}" class="mr2 link blue">
         <xsl:value-of select="image:loc"/>
       </a>
-      <xsl:if test="image:caption">
-        <span class="i gray">
-          <xsl:value-of select="image:caption"/>
-        </span>
-      </xsl:if>
       <xsl:apply-templates/>
     </p>
   </xsl:template>
 
+  <!-- Video: (Main column) -->
   <xsl:template match="video:video">
     <xsl:variable name="loc">
       <xsl:choose>
@@ -252,9 +261,12 @@
     <xsl:variable name="thumb_loc">
       <xsl:value-of select="video:thumbnail_loc"/>
     </xsl:variable>
-    <p>
+    <xsl:variable name="video_description">
+      <xsl:value-of select="video:description"/>
+    </xsl:variable>
+    <p class="nowrap">
       <strong>Video: </strong>
-      <a href="{$loc}" class="mr2 link blue">
+      <a href="{$loc}" title="{$video_description}" class="mr2 link blue">
         <xsl:choose>
           <xsl:when test="video:player_loc != ''">
             <xsl:value-of select="video:player_loc"/>
@@ -267,11 +279,6 @@
       <a href="{$thumb_loc}" class="dib mr2 ph2 pv1 tracked lh-solid link white bg-silver hover-bg-blue br-pill">
         thumb
       </a>
-      <xsl:if test="video:title">
-        <span class="i gray">
-          <xsl:value-of select="video:title"/>
-        </span>
-      </xsl:if>
       <xsl:apply-templates/>
     </p>
   </xsl:template>

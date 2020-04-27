@@ -76,22 +76,26 @@ namespace MintPlayer.AspNetCore.SitemapXml.Test.Controllers
                     HrefLang = "fr",
                     Href = $"{Request.Scheme}://{Request.Host}/{subject}/{person.Id}?lang=fr"
                 });
-                url.Videos.Add(new Data.Video
+                url.Videos.Add(new Video
                 {
-                    ContentLocation = "https://www.youtube.com/watch?v=EHfx9LXzxpw",
+                    ContentLocation = "https://www.youtube.com/watch?v=4N1iwQxiHrs",
                     ThumbnailLocation = "https://i.ytimg.com/vi/4N1iwQxiHrs/default.jpg",
-                    Description = "Your Love - The Outfield"
+                    Description = "Your Love - The Outfield",
+                    Title = "Your Love",
+                    PlayerLocation = "https://www.youtube.com/embed/4N1iwQxiHrs"
                 });
                 if (index != 2)
                 {
-                    url.Images.Add(new Data.Image
+                    url.Images.Add(new Image
                     {
                         Title = "Your Love - The Outfield",
+                        Caption = "Your Love",
                         Location = "https://i.ytimg.com/vi/EHfx9LXzxpw/hqdefault.jpg"
                     });
-                    url.Images.Add(new Data.Image
+                    url.Images.Add(new Image
                     {
                         Title = "Your Love - The Outfield",
+                        Caption = "Your Love",
                         Location = "https://i.ytimg.com/vi/4N1iwQxiHrs/hqdefault.jpg"
                     });
                 }
