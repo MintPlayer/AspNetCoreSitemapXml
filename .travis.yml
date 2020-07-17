@@ -1,13 +1,4 @@
 language: csharp
 dist: trusty
 sudo: required
-before_install:
-  - sudo apt-get update
-install:
-  - dotnet restore ./MintPlayer.AspNetCore.SitemapXml.sln
-script:
-  - dotnet build ./MintPlayer.AspNetCore.SitemapXml.sln
-  - dotnet test ./MintPlayer.AspNetCore.SitemapXml/MintPlayer.AspNetCore.SitemapXml.csproj
-cache:
-  directories:
-  - ./BuildPackages
+solution: MintPlayer.AspNetCore.SitemapXml.sln
