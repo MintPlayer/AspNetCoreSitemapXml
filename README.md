@@ -1,6 +1,7 @@
 # MintPlayer.AspNetCore.SitemapXml
 [![NuGet Version](https://img.shields.io/nuget/v/MintPlayer.AspNetCore.SitemapXml.svg?style=flat)](https://www.nuget.org/packages/MintPlayer.AspNetCore.SitemapXml)
 [![NuGet](https://img.shields.io/nuget/dt/MintPlayer.AspNetCore.SitemapXml.svg?style=flat)](https://www.nuget.org/packages/MintPlayer.AspNetCore.SitemapXml)
+[![Build Status](https://travis-ci.org/MintPlayer/MintPlayer.AspNetCore.SitemapXml.svg?branch=master)](https://travis-ci.org/MintPlayer/MintPlayer.AspNetCore.SitemapXml)
 
 Helper library to host a sitemap from your ASP.NET Core application
 ## NuGet package
