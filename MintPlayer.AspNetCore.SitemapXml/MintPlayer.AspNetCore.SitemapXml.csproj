@@ -1,36 +1,36 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-    <PackageId>MintPlayer.AspNetCore.SitemapXml</PackageId>
-    <IncludeSymbols>true</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-    <Authors>Pieterjan De Clippel</Authors>
-    <Company>MintPlayer</Company>
-    <Description>Helper library to host a sitemap from your ASP.NET Core application</Description>
-    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/MintPlayer/MintPlayer.AspNetCore.SitemapXml</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/MintPlayer/MintPlayer.AspNetCore.SitemapXml</RepositoryUrl>
-    <RepositoryType>Git</RepositoryType>
-    <PackageTags>ASP.NET Core, XML Sitemap</PackageTags>
-    <Version>1.2.0</Version>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netcoreapp3.1</TargetFramework>
+		<PackageId>MintPlayer.AspNetCore.SitemapXml</PackageId>
+		<IncludeSymbols>true</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		<Authors>Pieterjan De Clippel</Authors>
+		<Company>MintPlayer</Company>
+		<Description>Helper library to host a sitemap from your ASP.NET Core application</Description>
+		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+		<PackageProjectUrl>https://github.com/MintPlayer/MintPlayer.AspNetCore.SitemapXml</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/MintPlayer/MintPlayer.AspNetCore.SitemapXml</RepositoryUrl>
+		<RepositoryType>Git</RepositoryType>
+		<PackageTags>ASP.NET Core, XML Sitemap</PackageTags>
+		<Version>1.2.1</Version>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <None Remove=".gitignore" />
-    <None Remove="Assets\sitemap.xsl" />
-  </ItemGroup>
+	<ItemGroup>
+		<None Remove=".gitignore" />
+		<None Remove="Assets\sitemap.xsl" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <EmbeddedResource Include="Assets\sitemap.xsl">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-  </ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Include="Assets\sitemap.xsl">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</EmbeddedResource>
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.0" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.0" />
-    <PackageReference Include="MintPlayer.Timestamps" Version="1.0.1" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.7" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.7" />
+		<PackageReference Include="MintPlayer.Timestamps" Version="1.0.2" />
+	</ItemGroup>
 
 </Project>
