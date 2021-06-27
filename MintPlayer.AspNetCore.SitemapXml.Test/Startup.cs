@@ -56,10 +56,6 @@ namespace MintPlayer.AspNetCore.SitemapXml.Test
             }
             app.UseHttpsRedirection();
 
-            app.UseDefaultSitemapXmlStylesheet(options =>
-            {
-                options.StylesheetUrl = "/assets/sitemap.xsl";
-            });
             app.UseStaticFiles();
             
             app.UseRouting();
@@ -68,6 +64,7 @@ namespace MintPlayer.AspNetCore.SitemapXml.Test
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapDefaultSitemapXmlStylesheet(options => options.StylesheetUrl = "/assets/sitemap.xsl");
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");

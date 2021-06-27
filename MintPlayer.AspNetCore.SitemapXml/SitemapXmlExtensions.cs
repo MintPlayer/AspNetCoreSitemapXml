@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using MintPlayer.AspNetCore.SitemapXml.Options;
+using Microsoft.AspNetCore.Routing;
 
 namespace MintPlayer.AspNetCore.SitemapXml
 {
@@ -30,35 +31,20 @@ namespace MintPlayer.AspNetCore.SitemapXml
         }
 
         /// <summary>Hosts a template XML stylesheet on the specified URL</summary>
-        public static IApplicationBuilder UseDefaultSitemapXmlStylesheet(this IApplicationBuilder app, Action<SitemapXmlOptions> options)
+        public static IEndpointConventionBuilder MapDefaultSitemapXmlStylesheet(this IEndpointRouteBuilder endpoints, Action<SitemapXmlOptions> options)
         {
             var opt = new SitemapXmlOptions();
             options(opt);
 
-            return app.Use(async (context, next) =>
+            return endpoints.MapGet(opt.StylesheetUrl, async (context) =>
             {
-                
-                if (context.Request.Path == opt.StylesheetUrl)
-                {
-                    try
-                    {
-                        context.Response.ContentType = "text/xsl; charset=UTF-8";
+                context.Response.ContentType = "text/xsl; charset=UTF-8";
 
-                        using (var stream = typeof(Sitemap).Assembly.GetManifestResourceStream("MintPlayer.AspNetCore.SitemapXml.Assets.sitemap.xsl"))
-                        using (var streamreader = new System.IO.StreamReader(stream))
-                        {
-                            var content = await streamreader.ReadToEndAsync();
-                            await context.Response.WriteAsync(content);
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        throw ex;
-                    }
-                }
-                else
+                using (var stream = typeof(Sitemap).Assembly.GetManifestResourceStream("MintPlayer.AspNetCore.SitemapXml.Assets.sitemap.xsl"))
+                using (var streamreader = new System.IO.StreamReader(stream))
                 {
-                    await next();
+                    var content = await streamreader.ReadToEndAsync();
+                    await context.Response.WriteAsync(content);
                 }
             });
         }
