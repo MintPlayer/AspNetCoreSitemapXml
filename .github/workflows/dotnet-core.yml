@@ -24,12 +24,14 @@ jobs:
         NUGET_AUTH_TOKEN: '%NUGET_AUTH_TOKEN%'
     - name: Install dependencies
       run: dotnet restore
+      env:
+        NUGET_AUTH_TOKEN: ${{ github.token }}
     - name: Build
       run: dotnet build --configuration Release --no-restore
     - name: Test
       run: dotnet test --no-restore --verbosity normal
     - name: Pack
-      run: dotnet pack --no-build --configuration Release MintPlayer.AspNetCore.SitemapXml/MintPlayer.AspNetCore.SitemapXml.csproj --output .
+      run: dotnet pack --no-build --configuration Release MintPlayer.AspNetCore.SitemapXml/MintPlayer.AspNetCore.SitemapXml.csproj
     - name: PushNuget
       run: dotnet nuget push **/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.PUBLISH_TO_NUGET_ORG }} --skip-duplicate
     - name: PushGithub
